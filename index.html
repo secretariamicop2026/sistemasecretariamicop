@@ -9,42 +9,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#20262E;
-    --pine:#20262E;
-    --pine-dark:#151A20;
-    --parchment:#EEF1F4;
-    --parchment-deep:#E4E8ED;
-    --card:#FFFFFF;
-    /* Colores de prioridad — usados en todo el sistema */
-    --rojo:#E23744;
-    --rojo-soft:#FCE0E2;
-    --amarillo:#F0A93B;
-    --amarillo-soft:#FCEACB;
-    --celeste:#2FA7DE;
-    --celeste-soft:#D9EFFB;
-    --verde:#1FA766;
-    --verde-soft:#D6F1E4;
+    --ink:#E7EAF0;
+    --pine:#2A3040;
+    --pine-dark:#0D0F14;
+    --parchment:#0F1216;
+    --parchment-deep:#1B1F27;
+    --card:#181C24;
+    /* Colores de prioridad — usados en todo el sistema (ajustados para fondo oscuro) */
+    --rojo:#F0555F;
+    --rojo-soft:rgba(240,85,95,0.16);
+    --amarillo:#F5B84B;
+    --amarillo-soft:rgba(245,184,75,0.16);
+    --celeste:#4FB4E8;
+    --celeste-soft:rgba(79,180,232,0.16);
+    --verde:#3FCB8C;
+    --verde-soft:rgba(63,203,140,0.16);
     /* alias retrocompatibles */
     --gold:var(--celeste); --gold-soft:var(--celeste-soft);
     --coral:var(--rojo); --coral-soft:var(--rojo-soft);
     --sage:var(--verde); --sage-soft:var(--verde-soft);
     --blue:var(--celeste); --blue-soft:var(--celeste-soft);
-    --line:#E1E5EA;
-    --muted:#828B96;
+    --line:#2A2F3A;
+    --muted:#8B93A1;
     --sbw:256px;
     --r-sm:8px; --r-md:12px; --r-lg:18px; --r-pill:999px;
     /* acento dinámico por módulo — cambia con body[data-accent] */
-    --accent:#20262E; --accent-soft:#E4E8ED; --accent-text:#20262E;
+    --accent:#4FB4E8; --accent-soft:rgba(79,180,232,0.16); --accent-text:#4FB4E8;
   }
-  body[data-accent="rojo"]{ --accent:var(--rojo); --accent-soft:var(--rojo-soft); --accent-text:#7A1017; }
-  body[data-accent="amarillo"]{ --accent:var(--amarillo); --accent-soft:var(--amarillo-soft); --accent-text:#7A4E0A; }
-  body[data-accent="celeste"]{ --accent:var(--celeste); --accent-soft:var(--celeste-soft); --accent-text:#0D5A85; }
-  body[data-accent="verde"]{ --accent:var(--verde); --accent-soft:var(--verde-soft); --accent-text:#0F6B41; }
+  body[data-accent="rojo"]{ --accent:var(--rojo); --accent-soft:var(--rojo-soft); --accent-text:var(--rojo); }
+  body[data-accent="amarillo"]{ --accent:var(--amarillo); --accent-soft:var(--amarillo-soft); --accent-text:var(--amarillo); }
+  body[data-accent="celeste"]{ --accent:var(--celeste); --accent-soft:var(--celeste-soft); --accent-text:var(--celeste); }
+  body[data-accent="verde"]{ --accent:var(--verde); --accent-soft:var(--verde-soft); --accent-text:var(--verde); }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background-color:var(--parchment);
-    background-image:radial-gradient(rgba(32,38,46,0.06) 1px, transparent 1px);
+    background-image:radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
     background-size:15px 15px;
     color:var(--ink);
     font-family:'Work Sans', sans-serif;
@@ -59,7 +59,7 @@
   /* ---------------- SIDEBAR ---------------- */
   .sidebar{
     width:var(--sbw); flex:0 0 auto;
-    background:#FFFFFF;
+    background:#12151B;
     color:var(--ink);
     padding:22px 14px 20px 14px;
     position:sticky; top:0; height:100vh; overflow-y:auto;
@@ -94,11 +94,11 @@
   .sb-item{
     display:flex; align-items:center; gap:10px;
     padding:9px 16px; margin:2px 4px; cursor:pointer;
-    font-size:13px; font-weight:500; color:#5B636D;
+    font-size:13px; font-weight:500; color:#9AA2AF;
     border-radius:var(--r-pill);
     transition:background .12s ease, color .12s ease;
   }
-  .sb-item:hover{background:#F1F3F5; color:var(--ink);}
+  .sb-item:hover{background:rgba(255,255,255,0.06); color:var(--ink);}
   .sb-item.active{
     background:var(--accent); color:#fff;
     font-weight:600;
@@ -224,12 +224,12 @@
 
   .status-pill{font-family:'Work Sans',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.02em; padding:4px 10px; border-radius:var(--r-pill); white-space:nowrap; display:inline-block;}
   /* escala de desempeño: 0-69 rojo · 70-79 amarillo · 80-89 celeste · 90-100 verde */
-  .st-ok{background:var(--verde-soft); color:#0F6B41;}
-  .st-warn{background:var(--celeste-soft); color:#0D5A85;}
-  .st-warn2{background:var(--amarillo-soft); color:#8A5A0A;}
-  .st-bad{background:var(--rojo-soft); color:#9E1620;}
+  .st-ok{background:var(--verde-soft); color:var(--verde);}
+  .st-warn{background:var(--celeste-soft); color:var(--celeste);}
+  .st-warn2{background:var(--amarillo-soft); color:var(--amarillo);}
+  .st-bad{background:var(--rojo-soft); color:var(--rojo);}
   .st-muted{background:var(--parchment-deep); color:var(--muted);}
-  .st-info{background:var(--celeste-soft); color:#0D5A85;}
+  .st-info{background:var(--celeste-soft); color:var(--celeste);}
 
   /* ---------------- toolbar ---------------- */
   .toolbar{display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
@@ -249,8 +249,8 @@
   .bc-axis{stroke:var(--line); stroke-width:1;}
 
   /* ---------------- modal ---------------- */
-  .modal-overlay{position:fixed; inset:0; background:rgba(21,26,32,0.55); display:flex; align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto; z-index:100;}
-  .modal-box{background:var(--card); border-radius:var(--r-lg); max-width:640px; width:100%; padding:32px 32px 28px 32px; position:relative; box-shadow:0 30px 60px rgba(0,0,0,0.25);}
+  .modal-overlay{position:fixed; inset:0; background:rgba(0,0,0,0.65); display:flex; align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto; z-index:100;}
+  .modal-box{background:var(--card); border-radius:var(--r-lg); max-width:640px; width:100%; padding:32px 32px 28px 32px; position:relative; box-shadow:0 30px 70px rgba(0,0,0,0.55);}
   .modal-close{position:absolute; top:18px; right:18px; background:var(--parchment-deep); border:none; width:28px; height:28px; border-radius:50%; font-size:14px; color:var(--muted); cursor:pointer;}
   .modal-eyebrow{font-family:'Work Sans',sans-serif; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted);}
   .modal-title{font-family:'Fraunces',serif; font-size:26px; font-weight:600; margin:6px 0 12px 0; color:var(--ink);}
@@ -321,7 +321,7 @@
     display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%;
     font-family:'Work Sans',sans-serif; font-weight:700; font-size:11px; background:var(--parchment-deep); color:var(--muted);
   }
-  .rank-badge.top{background:var(--verde-soft); color:#0F6B41;}
+  .rank-badge.top{background:var(--verde-soft); color:var(--verde);}
 
   .crit-row{display:grid; grid-template-columns:1fr 70px 90px; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--parchment-deep);}
   .crit-row:last-child{border-bottom:none;}
@@ -344,7 +344,7 @@
   }
   .poa-repro-badge{
     font-family:'Work Sans',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.03em; text-transform:uppercase;
-    color:#9E1620; background:var(--rojo-soft); padding:4px 10px; border-radius:var(--r-pill); margin-left:6px;
+    color:var(--rojo); background:var(--rojo-soft); padding:4px 10px; border-radius:var(--r-pill); margin-left:6px;
   }
   .poa-line{display:flex; gap:8px; align-items:flex-start; font-size:12.5px; line-height:1.4; margin-bottom:7px; color:var(--ink);}
   .poa-line:last-child{margin-bottom:0;}
@@ -512,6 +512,61 @@ function barChart({labels, values, width=560, height=230, color='var(--accent)',
   }
 }
 
+/* ---------------- Gráfico de dona (SVG) ---------------- */
+function donutChart({segments, size=176, thickness=24}){
+  const total = segments.reduce((a,s)=>a+s.value,0) || 1;
+  const r = (size - thickness)/2;
+  const c = 2*Math.PI*r;
+  let offset = 0;
+  const circles = segments.filter(s=>s.value>0).map(s=>{
+    const frac = s.value/total;
+    const dash = Math.max(frac*c - (segments.length>1?1.5:0), 0);
+    const circle = `<circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${thickness}" stroke-dasharray="${dash} ${c-dash}" stroke-dashoffset="${-offset}" stroke-linecap="butt"><title>${s.label}: ${fmt(s.value)}</title></circle>`;
+    offset += frac*c;
+    return circle;
+  }).join('');
+  return `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" style="transform:rotate(-90deg); overflow:visible;">${circles}</svg>`;
+}
+function donutWithCenter({segments, size=176, thickness=24, centerValue, centerLabel}){
+  return `
+  <div style="position:relative; width:${size}px; height:${size}px; margin:0 auto;">
+    ${donutChart({segments, size, thickness})}
+    <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 12px;">
+      <div style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:var(--ink); line-height:1;">${centerValue}</div>
+      <div style="font-family:'Work Sans',sans-serif; font-weight:600; font-size:9.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); margin-top:5px;">${centerLabel}</div>
+    </div>
+  </div>`;
+}
+function donutLegend(segments){
+  const total = segments.reduce((a,s)=>a+s.value,0) || 1;
+  return `<div style="display:flex; flex-direction:column; gap:9px;">
+    ${segments.map(s=>`
+      <div style="display:flex; align-items:center; gap:9px; font-size:12.5px;">
+        <span style="width:10px; height:10px; border-radius:3px; background:${s.color}; flex:0 0 auto;"></span>
+        <span style="flex:1; color:var(--ink);">${s.label}</span>
+        <span style="font-family:'IBM Plex Mono',monospace; color:var(--muted);">${fmt(s.value)} · ${(s.value/total*100).toFixed(0)}%</span>
+      </div>`).join('')}
+  </div>`;
+}
+
+/* ---------------- Gráfico de dispersión (SVG) ---------------- */
+function scatterChart({points, width=560, height=260, xLabel='', yLabel='', color='var(--accent)'}){
+  const pad = {top:16, right:20, bottom:34, left:46};
+  const cw = width-pad.left-pad.right, ch = height-pad.top-pad.bottom;
+  const xMax = Math.max(...points.map(p=>p.x), 1), yMax = Math.max(...points.map(p=>p.y), 1);
+  const sx = x => pad.left + (x/xMax)*cw;
+  const sy = y => pad.top + ch - (y/yMax)*ch;
+  const dots = points.map(p=>`<circle cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="4.5" fill="${p.color||color}" fill-opacity="0.82"><title>${p.label||''}</title></circle>`).join('');
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" style="max-width:${width}px">
+    <line x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${pad.top+ch}" class="bc-axis"></line>
+    <line x1="${pad.left}" y1="${pad.top+ch}" x2="${width-pad.right}" y2="${pad.top+ch}" class="bc-axis"></line>
+    <text x="${pad.left}" y="${height-6}" class="bc-label">${xLabel}</text>
+    <text x="4" y="${pad.top+9}" class="bc-label">${yLabel}</text>
+    <text x="${width-pad.right}" y="${pad.top+ch+16}" text-anchor="end" class="bc-label">${fmt(xMax)}</text>
+    ${dots}
+  </svg>`;
+}
+
 /* ================================================================
    PANORAMA GENERAL (cross-module)
    ================================================================ */
@@ -589,11 +644,28 @@ function renderActResumen(){
         <span class="mini-pct" style="color:${pctColor(d.pct_avance)}">${d.pct_avance}%</span>
       </div>`).join('');
   }
+  const bandCounts = {rojo:0, amarillo:0, celeste:0, verde:0};
+  ADISTRITOS.forEach(d=>{ const p=d.pct_avance??0; if(p>=90) bandCounts.verde++; else if(p>=80) bandCounts.celeste++; else if(p>=70) bandCounts.amarillo++; else bandCounts.rojo++; });
+  const bandSegments = [
+    {label:'Excelente (90-100%)', value:bandCounts.verde, color:'var(--verde)'},
+    {label:'Muy bueno (80-89%)', value:bandCounts.celeste, color:'var(--celeste)'},
+    {label:'Bueno (70-79%)', value:bandCounts.amarillo, color:'var(--amarillo)'},
+    {label:'En proceso (0-69%)', value:bandCounts.rojo, color:'var(--rojo)'},
+  ];
   document.getElementById('viewRoot').innerHTML = `
     <div class="kpi-grid">${kpis.map(k=>`<div class="kpi ${k.cls}"><div class="k-label">${k.label}</div><div class="k-value">${k.value}</div><div class="k-note">${k.note}</div></div>`).join('')}</div>
-    <div class="two-col">
+    <div class="two-col uneven">
+      <div class="card-block pad">
+        <div class="block-title">Distritos por nivel de avance</div>
+        <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+          ${donutWithCenter({segments:bandSegments, centerValue:AS.total_distritos, centerLabel:'Distritos'})}
+          <div style="flex:1; min-width:180px;">${donutLegend(bandSegments)}</div>
+        </div>
+      </div>
       <div class="card-block pad"><div class="block-title">Distritos con mayor avance</div>${miniList(top5)}</div>
-      <div class="card-block pad"><div class="block-title">Distritos que requieren acompañamiento</div>${miniList(bottom5)}</div>
+    </div>
+    <div class="card-block pad">
+      <div class="block-title">Distritos que requieren acompañamiento</div>${miniList(bottom5)}
     </div>
   `;
 }
@@ -765,8 +837,33 @@ function renderBauResumen(){
     {label:'Sin bautismos en el año', value:fmt(B.total_sin_bautismo), note:((B.total_sin_bautismo/B.total_congregaciones)*100).toFixed(1)+'% de las congregaciones', cls:'alert'},
     {label:'Miembros MiCOP (base)', value:fmt(B.total_miembros), note:'Sumatoria de congregaciones reportadas', cls:''},
   ];
+  const conBautismo = B.congregaciones.filter(c=>c.total>0).length;
+  const tipoSegments = [
+    {label:'Iglesias', value:B.total_iglesias, color:'var(--celeste)'},
+    {label:'Grupos', value:B.total_grupos, color:'var(--amarillo)'},
+  ];
+  const bautSegments = [
+    {label:'Con bautismos en 2026', value:conBautismo, color:'var(--verde)'},
+    {label:'Sin bautismos en 2026', value:B.total_sin_bautismo, color:'var(--rojo)'},
+  ];
   document.getElementById('viewRoot').innerHTML = `
     <div class="kpi-grid">${kpis.map(k=>`<div class="kpi ${k.cls}"><div class="k-label">${k.label}</div><div class="k-value">${k.value}</div><div class="k-note">${k.note}</div></div>`).join('')}</div>
+    <div class="two-col">
+      <div class="card-block pad">
+        <div class="block-title">Iglesias vs. grupos</div>
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          ${donutWithCenter({segments:tipoSegments, centerValue:B.total_congregaciones, centerLabel:'Total'})}
+          <div style="flex:1; min-width:150px;">${donutLegend(tipoSegments)}</div>
+        </div>
+      </div>
+      <div class="card-block pad">
+        <div class="block-title">Congregaciones con vs. sin bautismos</div>
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          ${donutWithCenter({segments:bautSegments, centerValue:((conBautismo/B.total_congregaciones)*100).toFixed(0)+'%', centerLabel:'Bautizaron'})}
+          <div style="flex:1; min-width:150px;">${donutLegend(bautSegments)}</div>
+        </div>
+      </div>
+    </div>
     <div class="card-block pad">
       <div class="block-title">Bautismos por mes · MiCOP 2026</div>
       <div class="chart-wrap">${barChart({labels:MESES.map(m=>m.slice(0,3)), values:B.meses_total, width:1000, height:230, color:'var(--accent)'})}</div>
@@ -776,11 +873,12 @@ function renderBauResumen(){
 
 function renderBauZonas(){
   const zonasSorted = [...B.zonas].sort((a,b)=>b.total-a.total);
+  const scatterPoints = B.congregaciones.filter(c=>c.miembros>0).map(c=>({x:c.miembros, y:c.total, label:`${c.nombre} (${c.distrito})`, color:c.total===0?'var(--rojo)':(c.tipo==='Iglesia'?'var(--celeste)':'var(--amarillo)')}));
   document.getElementById('viewRoot').innerHTML = `
     <div class="two-col uneven">
       <div class="card-block pad">
         <div class="block-title">Bautismos totales por zona</div>
-        <div class="chart-wrap">${barChart({labels:zonasSorted.map(z=>z.zona.replace('Zona ','')), values:zonasSorted.map(z=>z.total), width:480, height:230, color:'var(--accent)'})}</div>
+        <div class="chart-wrap">${barChart({labels:zonasSorted.map(z=>z.zona), values:zonasSorted.map(z=>z.total), width:480, height:280, color:'var(--accent)', horizontal:true})}</div>
       </div>
       <div class="card-block pad">
         <div class="block-title">Detalle por zona</div>
@@ -789,6 +887,11 @@ function renderBauZonas(){
           <tbody>${zonasSorted.map(z=>`<tr><td class="strong">${z.zona}</td><td>${fmt(z.total)}</td><td>${z.iglesias}</td><td>${z.grupos}</td><td class="${z.sin_bautismo>0?'muted':''}">${z.sin_bautismo}</td></tr>`).join('')}</tbody>
         </table>
       </div>
+    </div>
+    <div class="card-block pad" style="margin-bottom:16px;">
+      <div class="block-title">Miembros vs. bautismos por congregación</div>
+      <p class="muted small" style="margin:-6px 0 10px 0;">Cada punto es una iglesia (celeste) o grupo (amarillo). Pasa el cursor sobre un punto para ver cuál es.</p>
+      <div class="chart-wrap">${scatterChart({points:scatterPoints, width:1000, height:280, xLabel:'Miembros', yLabel:'Bautismos 2026'})}</div>
     </div>
     <div class="card-block pad" style="margin-top:16px;">
       <div class="block-title">Bautismos por distrito</div>
@@ -1104,18 +1207,35 @@ function renderEvalResumen(){
         <span class="mini-pct" style="color:${pctColor(p)}">${p.toFixed(1)}%</span>
       </div>`;}).join('');
   }
+  const evalBandCounts = {rojo:0, amarillo:0, celeste:0, verde:0};
+  pcts.forEach(p=>{ if(p>=90) evalBandCounts.verde++; else if(p>=80) evalBandCounts.celeste++; else if(p>=70) evalBandCounts.amarillo++; else evalBandCounts.rojo++; });
+  const evalBandSegments = [
+    {label:'Excelente', value:evalBandCounts.verde, color:'var(--verde)'},
+    {label:'Muy bueno', value:evalBandCounts.celeste, color:'var(--celeste)'},
+    {label:'Bueno', value:evalBandCounts.amarillo, color:'var(--amarillo)'},
+    {label:'En proceso', value:evalBandCounts.rojo, color:'var(--rojo)'},
+  ];
 
   document.getElementById('viewRoot').innerHTML = `
     <div class="kpi-grid" style="grid-template-columns:repeat(5,1fr);">${kpis.map(k=>`<div class="kpi ${k.cls}"><div class="k-label">${k.label}</div><div class="k-value">${k.value}</div><div class="k-note">${k.note}</div></div>`).join('')}</div>
-    <div class="card-block pad" style="margin-bottom:16px;">
-      <div class="block-title">Avance promedio por área estratégica</div>
-      <div class="area-compare">
-        ${T_ORDER.map(a=>`
-          <div class="area-row">
-            <div class="a-name">${T_AREAS[a]}</div>
-            <div class="a-track"><div class="a-fill" style="width:${Math.min(areaAvg[a],100).toFixed(1)}%; background:${pctColor(areaAvg[a])}"></div></div>
-            <div class="a-val">${areaAvg[a].toFixed(1)}%</div>
+    <div class="two-col uneven">
+      <div class="card-block pad">
+        <div class="block-title">Avance promedio por área estratégica</div>
+        <div class="area-compare">
+          ${T_ORDER.map(a=>`
+            <div class="area-row">
+              <div class="a-name">${T_AREAS[a]}</div>
+              <div class="a-track"><div class="a-fill" style="width:${Math.min(areaAvg[a],100).toFixed(1)}%; background:${pctColor(areaAvg[a])}"></div></div>
+              <div class="a-val">${areaAvg[a].toFixed(1)}%</div>
           </div>`).join('')}
+        </div>
+      </div>
+      <div class="card-block pad">
+        <div class="block-title">Distritos por nivel de desempeño</div>
+        <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          ${donutWithCenter({segments:evalBandSegments, centerValue:distritos.length, centerLabel:'Distritos'})}
+          <div style="flex:1; min-width:150px;">${donutLegend(evalBandSegments)}</div>
+        </div>
       </div>
     </div>
     <div class="two-col">
