@@ -482,6 +482,15 @@
 
   footer.foot{margin:40px 40px 0 40px; padding:20px 0 0 0; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px; line-height:1.6;}
 
+  /* ---------------- menú móvil (hamburguesa) ---------------- */
+  .mobile-menu-btn{
+    display:none; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:var(--r-md); border:1px solid var(--line); background:var(--card);
+    color:var(--ink); cursor:pointer; flex:0 0 auto; margin-bottom:14px;
+  }
+  .sidebar-backdrop{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:55;}
+  .sidebar-backdrop.open{display:block;}
+
   @media (max-width:1000px){
     .kpi-grid{grid-template-columns:repeat(2,1fr);}
     .two-col{grid-template-columns:1fr;}
@@ -491,11 +500,13 @@
     .field-row{grid-template-columns:120px 1fr 42px;}
     .field-faltan{display:none;}
     .modal-grid{grid-template-columns:repeat(2,1fr);}
+    .mobile-menu-btn{display:flex;}
   }
 </style>
 </head>
 <body>
 
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 <div class="app">
   <nav class="sidebar" id="sidebar">
     <div class="sb-brand">
@@ -552,6 +563,9 @@
 
   <main class="main">
     <div class="content-header">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
       <div class="ch-eyebrow"><span class="dot"></span><span id="chEyebrow">MiCOP · Secretaría</span></div>
       <h2 id="chTitle">Panorama general</h2>
       <p class="sub" id="chSub"></p>
@@ -2088,8 +2102,14 @@ function navigate(route){
 }
 
 document.querySelectorAll('.sb-item[data-route]').forEach(el=>{
-  el.addEventListener('click', ()=> navigate(el.dataset.route));
+  el.addEventListener('click', ()=> { navigate(el.dataset.route); closeMobileMenu(); });
 });
+
+/* ---------------- menú móvil ---------------- */
+function openMobileMenu(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebarBackdrop').classList.add('open'); }
+function closeMobileMenu(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarBackdrop').classList.remove('open'); }
+document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+document.getElementById('sidebarBackdrop').addEventListener('click', closeMobileMenu);
 
 function renderFooterNotes(){
   const liveTag = liveDataStatus.ok
