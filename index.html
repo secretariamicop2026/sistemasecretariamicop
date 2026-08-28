@@ -412,7 +412,19 @@
   }
 
   /* ---------------- TARJETA DE EVALUACIÓN (réplica del diseño oficial) ---------------- */
-  .tj-picker{display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;}
+  .tj-picker{display:flex; gap:14px; margin-bottom:20px; flex-wrap:wrap;}
+  .tj-picker-item{display:flex; flex-direction:column; gap:5px;}
+  .tj-picker-item label{font-family:'Work Sans',sans-serif; font-weight:600; font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);}
+  .tj-picker select{
+    appearance:none; -webkit-appearance:none;
+    font-family:'Work Sans',sans-serif; font-weight:600; font-size:13.5px; color:var(--ink);
+    background:var(--card) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%238B93A1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 14px center;
+    border:1.5px solid var(--line); border-radius:var(--r-pill);
+    padding:11px 38px 11px 18px; min-width:190px; cursor:pointer; outline:none;
+  }
+  .tj-picker select:hover{border-color:var(--accent);}
+  .tj-picker select:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+  .tj-picker select option{background:#1E232D; color:var(--ink);}
   .tj-card{background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; max-width:900px;}
   .tj-header{
     padding:26px 28px 22px 28px; position:relative; overflow:hidden;
@@ -1885,8 +1897,8 @@ function renderEvalTarjeta(){
   }
   document.getElementById('viewRoot').innerHTML = `
     <div class="tj-picker">
-      <select id="tjZona">${zonaOptions.map(z=>`<option value="${z}" ${z===tarjetaState.zona?'selected':''}>${z==='todas'?'Todas las zonas':z}</option>`).join('')}</select>
-      <select id="tjDistrito">${distritoOptions.map(d=>`<option value="${d}" ${d===tarjetaState.distrito?'selected':''}>${d}</option>`).join('')}</select>
+      <div class="tj-picker-item"><label>Zona</label><select id="tjZona">${zonaOptions.map(z=>`<option value="${z}" ${z===tarjetaState.zona?'selected':''}>${z==='todas'?'Todas las zonas':z}</option>`).join('')}</select></div>
+      <div class="tj-picker-item"><label>Distrito</label><select id="tjDistrito">${distritoOptions.map(d=>`<option value="${d}" ${d===tarjetaState.distrito?'selected':''}>${d}</option>`).join('')}</select></div>
     </div>
     <div id="tjCardWrap"></div>
     <div id="tjStatsWrap"></div>
