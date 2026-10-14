@@ -1069,7 +1069,9 @@ const SLOTS = [
 /* ---------- conexión con GitHub ---------- */
 function ghDefaults(){
   const h = location.hostname, m = /^([^.]+)\.github\.io$/i.exec(h);
-  return {owner: m?m[1]:'', repo: m?h:'', branch:'main', token:''};
+  const seg = (location.pathname.split('/')[1]||'');
+  const repo = m ? ((seg && !/\.html?$/i.test(seg)) ? seg : h) : '';
+  return {owner: m?m[1]:'', repo, branch:'main', token:''};
 }
 function ghCfg(){
   let c = {}; try{ c = JSON.parse(localStorage.getItem('micop_gh')||'{}'); }catch(e){}
@@ -1224,8 +1226,7 @@ function renderSubir(){
       <p class="muted small" style="margin:8px 0 12px">Sirve para que lo que subas aquí quede guardado en tu repositorio y todas las personas vean el cambio. El permiso se guarda solo en este navegador; no queda dentro de la página.</p>
       <details class="up-steps"><summary>¿Cómo obtengo el permiso (token)? Pasos</summary>
         <ol>
-          <li>Entra a <b>github.com</b> con tu cuenta, toca tu foto de perfil → <b>Settings</b>.</li>
-          <li>Al final del menú izquierdo: <b>Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
+          <li>Abre este enlace (estando con tu sesión de GitHub): <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>. Es la configuración de <b>tu cuenta</b>, no la del repositorio.</li>
           <li>Nombre: <b>Panel MiCOP</b>. Vencimiento: el más largo que te deje.</li>
           <li><b>Repository access → Only select repositories</b> y elige el repositorio de este sistema.</li>
           <li><b>Permissions → Repository permissions → Contents → Read and write</b>.</li>
